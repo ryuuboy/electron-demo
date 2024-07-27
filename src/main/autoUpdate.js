@@ -4,14 +4,14 @@ const { join } = require("path");
 
 const checkUpdate = (win) => {
   // start,这里是是为了在本地做应用升级测试使用，正式环境请务必删除
-  if (process.env.NODE_ENV === "development") {
-    Object.defineProperty(app, "isPackaged", {
-      get() {
-        return true;
-      }
-    });
-    autoUpdater.updateConfigPath = join(__dirname, "../../dev-app-update.yml");
-  }
+  // if (process.env.NODE_ENV === "development") {
+  //   Object.defineProperty(app, "isPackaged", {
+  //     get() {
+  //       return true;
+  //     }
+  //   });
+  //   autoUpdater.updateConfigPath = join(__dirname, "../../dev-app-update.yml");
+  // }
   // end
 
   // 自动下载更新
