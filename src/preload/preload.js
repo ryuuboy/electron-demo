@@ -11,4 +11,13 @@ contextBridge.exposeInMainWorld("windowApi", {
   invokeHandle: (num1, num2) => {
     return ipcRenderer.invoke("sumNumbers", num1, num2);
   }
-})
+});
+
+contextBridge.exposeInMainWorld("updateApi", {
+  checkUpdate: () => {
+    ipcRenderer.send("check-for-update");
+  },
+  showUpdateProgress: (progress) => {
+    ipcRenderer.on("downloadProgress", progress);
+  }
+});

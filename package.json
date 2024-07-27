@@ -1,20 +1,26 @@
 {
   "name": "my-project",
-  "version": "0.1.0",
-  "description": "是一个一个一个一个electron小demo",
+  "version": "0.0.2",
+  "description": "electron-demo",
   "author": "liu",
   "private": true,
   "main": "src/main/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryuuboy/electron-demo"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "ele": "wait-on http://localhost:9080 && electron .",
     "dev": "cross-env NODE_ENV=development concurrently \"npm run serve\" \"npm run ele\"",
     "dist": "vue-cli-service build",
-    "build": "cross-env NODE_ENV=production vue-cli-service build && electron-builder",
+    "build": "cross-env NODE_ENV=production vue-cli-service build && electron-builder --win --config --publish always",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "electron-updater": "^6.2.1",
+    "element-ui": "^2.15.14",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
@@ -56,6 +62,15 @@
     },
     "win": {
       "icon": "dist/icon.ico"
-    }
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "ryuuboy",
+        "repo": "electron-demo",
+        "token": "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",
+        "releaseType": "release"
+      }
+    ]
   }
 }

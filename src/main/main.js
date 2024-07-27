@@ -1,5 +1,6 @@
 const { BrowserWindow, app, ipcMain, Menu, MenuItem } = require('electron');
 const { join } = require('path');
+const { checkUpdate } = require("./autoUpdate");
 
 const createWindow = () => {
   console.log(process.env.NODE_ENV);
@@ -40,6 +41,7 @@ const createWindow = () => {
     win.loadFile("dist/index.html");
     // win.loadFile(join(__dirname, "../renderer/index.html"));
   }
+  checkUpdate(win);
 };
 
 app.whenReady().then(() => {

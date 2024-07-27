@@ -103,6 +103,16 @@
     <span>{{ a }}</span>
     <button @click="sumNumbers(5, 3)">5 + 3</button>
     <span>{{ b }}</span>
+    <div>
+      <button @click="checkUpdate">检查更新</button>
+    </div>
+    <el-dialog
+      title="下载进度条"
+      :visible.sync="dialogVisible"
+      width="50%"
+      append-to-body>
+      <el-progress :text-inside="true" :stroke-width="30" :percentage="progress" :status="progressStatus"></el-progress>
+    </el-dialog>
   </div>
 </template>
 
@@ -115,12 +125,23 @@ export default {
   data() {
     return {
       a: 1,
-      b: 0
+      b: 0,
+      progress: 0,
+      dialogVisible: false
+    };
+  },
+  computed: {
+    progressStatus() {
+      return Number(this.progress) === 100 ? "success" : "";
     }
   },
   mounted() {
     window.windowApi.mainToRender((event, num) => {
       this.a += num;
+    });
+    window.windowApi.showUpdateProgress((event, progress) => {
+      this.dialogVisible = Number(progress) < 100;
+      this.progress = Number(progress);
     });
   },
   methods: {
@@ -133,6 +154,9 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+    checkUpdate() {
+      window.windowApi.checkUpdate();
     }
   }
 };
