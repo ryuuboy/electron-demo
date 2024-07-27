@@ -104,7 +104,7 @@
     <button @click="sumNumbers(5, 3)">5 + 3</button>
     <span>{{ b }}</span>
     <div>
-      <button @click="checkUpdate">检查更新</button>
+      <el-button @click="checkUpdate">检查更新</el-button>
     </div>
     <el-dialog
       title="下载进度条"
@@ -139,9 +139,9 @@ export default {
     window.windowApi.mainToRender((event, num) => {
       this.a += num;
     });
-    window.windowApi.showUpdateProgress((event, progress) => {
-      this.dialogVisible = Number(progress) < 100;
-      this.progress = Number(progress);
+    window.updateApi.showUpdateProgress((event, progress) => {
+      this.dialogVisible = Number(progress.percent.toFixed(2)) < 100;
+      this.progress = Number(progress.percent.toFixed(2));
     });
   },
   methods: {
@@ -156,7 +156,7 @@ export default {
       }
     },
     checkUpdate() {
-      window.windowApi.checkUpdate();
+      window.updateApi.checkUpdate();
     }
   }
 };

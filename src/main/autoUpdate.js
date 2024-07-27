@@ -18,6 +18,7 @@ const checkUpdate = (win) => {
   autoUpdater.autoDownload = false;
   // 退出时自动安装更新
   autoUpdater.autoInstallOnAppQuit = false;
+  autoUpdater.disableWebInstaller = true;
   // 渲染进程触发检查更新
   ipcMain.on("check-for-update", () => {
     autoUpdater.checkForUpdates();
