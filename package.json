@@ -1,6 +1,6 @@
 {
   "name": "my-project",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "electron-demo",
   "author": "liu",
   "private": true,
@@ -68,7 +68,7 @@
         "provider": "github",
         "owner": "ryuuboy",
         "repo": "electron-demo",
-        "token": "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",
+        "token": "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",
         "releaseType": "release"
       }
     ]
